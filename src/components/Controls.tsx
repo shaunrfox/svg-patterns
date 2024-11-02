@@ -1,5 +1,6 @@
 import React from "react";
 import { colors } from "../utils/colorUtils.ts";
+import SvgElement from "./SvgElement";
 
 interface ColorPickerOptionProps {
   colors: string[];
@@ -18,6 +19,35 @@ const ColorPickerOption: React.FC<ColorPickerOptionProps> = ({
     <div key={i} className="swatch" style={{ backgroundColor: color }} />
   ));
 
+  const SvgElement = ({ children }: { children: React.ReactNode }) => (
+    <svg className="color-wheel" height="20" width="20" viewBox="0 0 20 20">
+      {children}
+    </svg>
+  );
+
+  const ColorWheel = () => {
+    const colorSegments = colors.map((color, i) => {
+      const key = `color-${i}`;
+      const percentage = 100 - (i / colors.length) * 100;
+      const strokeDasharray = `${(percentage * 31.4) / 100} 31.4`;
+      return (
+        <circle
+          key={key}
+          r="5"
+          cx="10"
+          cy="10"
+          fill="transparent"
+          stroke={color}
+          strokeWidth="10"
+          strokeDasharray={strokeDasharray}
+          transform="rotate(-90) translate(-20)"
+        />
+      );
+    });
+
+    return <SvgElement>{colorSegments}</SvgElement>;
+  };
+
   return (
     <label>
       <input
@@ -28,7 +58,8 @@ const ColorPickerOption: React.FC<ColorPickerOptionProps> = ({
         onChange={() => setSelectedColorSetIndex(index)}
       />
       <span>{index + 1}</span>
-      <div className="swatches">{swatches}</div>
+      {/* <div className="swatches">{swatches}</div> */}
+      <ColorWheel />
     </label>
   );
 };
@@ -125,7 +156,7 @@ export const Controls = ({
 
       <div className="rule"></div>
 
-      <div className="radio-group">
+      <div className="radio-group color-picker">
         <label>Color set</label>
         <div className="options">
           {colors.map((colorSet, index) => (
