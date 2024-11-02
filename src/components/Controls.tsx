@@ -1,6 +1,5 @@
 import React from "react";
 import { colors } from "../utils/colorUtils.ts";
-import SvgElement from "./SvgElement";
 
 interface ColorPickerOptionProps {
   colors: string[];
@@ -15,10 +14,6 @@ const ColorPickerOption: React.FC<ColorPickerOptionProps> = ({
   setSelectedColorSetIndex,
   index,
 }) => {
-  const swatches = colors.map((color, i) => (
-    <div key={i} className="swatch" style={{ backgroundColor: color }} />
-  ));
-
   const SvgElement = ({ children }: { children: React.ReactNode }) => (
     <svg className="color-wheel" height="20" width="20" viewBox="0 0 20 20">
       {children}
@@ -58,7 +53,6 @@ const ColorPickerOption: React.FC<ColorPickerOptionProps> = ({
         onChange={() => setSelectedColorSetIndex(index)}
       />
       <span>{index + 1}</span>
-      {/* <div className="swatches">{swatches}</div> */}
       <ColorWheel />
     </label>
   );
