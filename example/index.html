@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <div id="controls">
+      <div class="slider-group">
+        <label for="gridSlider">
+          <span>Grid size</span>
+          <span id="gridDisplay"></span>
+        </label>
+        <input
+          type="range"
+          min="20"
+          max="200"
+          step="5"
+          value="50"
+          id="gridSlider"
+        />
+      </div>
+      <div class="slider-group">
+        <label for="separationSlider">
+          <span>Gap size</span>
+          <span id="separationDisplay"></span>
+        </label>
+        <input
+          type="range"
+          min="0"
+          max="30"
+          step="1"
+          value="2"
+          id="separationSlider"
+        />
+      </div>
+      <div class="slider-group">
+        <label for="colorSlider">
+          <span>Colors</span>
+          <span id="colorDisplay"></span>
+        </label>
+        <input
+          type="range"
+          min="1"
+          max="12"
+          step="1"
+          value="6"
+          id="colorSlider"
+        />
+      </div>
+      <button id="randomizeButton">
+        <span>Randomize</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          fill="#000000"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M237.66,178.34a8,8,0,0,1,0,11.32l-24,24a8,8,0,0,1-11.32-11.32L212.69,192H200.94a72.12,72.12,0,0,1-58.59-30.15l-41.72-58.4A56.1,56.1,0,0,0,55.06,80H32a8,8,0,0,1,0-16H55.06a72.12,72.12,0,0,1,58.59,30.15l41.72,58.4A56.1,56.1,0,0,0,200.94,176h11.75l-10.35-10.34a8,8,0,0,1,11.32-11.32ZM143,107a8,8,0,0,0,11.16-1.86l1.2-1.67A56.1,56.1,0,0,1,200.94,80h11.75L202.34,90.34a8,8,0,0,0,11.32,11.32l24-24a8,8,0,0,0,0-11.32l-24-24a8,8,0,0,0-11.32,11.32L212.69,64H200.94a72.12,72.12,0,0,0-58.59,30.15l-1.2,1.67A8,8,0,0,0,143,107Zm-30,42a8,8,0,0,0-11.16,1.86l-1.2,1.67A56.1,56.1,0,0,1,55.06,176H32a8,8,0,0,0,0,16H55.06a72.12,72.12,0,0,0,58.59-30.15l1.2-1.67A8,8,0,0,0,113,149Z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div class="wrapper" id="wrapper"></div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      style="position: absolute; left: -10000px"
+    >
+      <defs>
+        <filter id="squiggly-0">
+          <feTurbulence
+            id="turbulence"
+            baseFrequency="0.02"
+            numOctaves="3"
+            result="noise"
+            seed="0"
+          />
+          <feDisplacementMap
+            id="displacement"
+            in="SourceGraphic"
+            in2="noise"
+            scale="2"
+          />
+        </filter>
+        <filter id="squiggly-1">
+          <feTurbulence
+            id="turbulence"
+            baseFrequency="0.02"
+            numOctaves="3"
+            result="noise"
+            seed="1"
+          />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="squiggly-2">
+          <feTurbulence
+            id="turbulence"
+            baseFrequency="0.02"
+            numOctaves="3"
+            result="noise"
+            seed="2"
+          />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+        </filter>
+        <filter id="squiggly-3">
+          <feTurbulence
+            id="turbulence"
+            baseFrequency="0.02"
+            numOctaves="3"
+            result="noise"
+            seed="3"
+          />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+        </filter>
+        <filter id="squiggly-4">
+          <feTurbulence
+            id="turbulence"
+            baseFrequency="0.02"
+            numOctaves="3"
+            result="noise"
+            seed="4"
+          />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="1" />
+        </filter>
+      </defs>
+    </svg>
+  </body>
+</html>

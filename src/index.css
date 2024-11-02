@@ -1,68 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Piazzolla:ital,opsz,wght@0,8..30,100..900;1,8..30,100..900&display=swap");
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+	--gray-0: #ffffff;
+	--gray-1: #fbfcfd;
+	--gray-2: #f7f9fa;
+	--gray-3: #f5f6f7;
+	--gray-4: #f1f3f6;
+	--gray-5: #edeff0;
+	--gray-10: #dfe1e2;
+	--gray-20: #c6cace;
+	--gray-30: #a9aeb1;
+	--gray-40: #8d9297;
+	--gray-50: #71767a;
+	--gray-60: #565c65;
+	--gray-70: #3d4551;
+	--gray-80: #2d2e2f;
+	--gray-90: #1c1d1f;
+	--gray-100: #000000;
+
+	--blue-5: #e8f5ff;
+	--blue-10: #cfe8ff;
+	--blue-20: #a1d3ff;
+	--blue-30: #58b4ff;
+	--blue-40: #2491ff;
+	--blue-50: #0076da;
+	--blue-60: #005ea2;
+	--blue-70: #0b4778;
+	--blue-80: #112f4e;
+
+	--yellow: #eacb2a;
+	--pink: #f1aaaa;
+
+	--font-stack-mono: "IBM Plex Mono", Andale Mono, monaco, Consolas, Lucida Console, monospace;
+	--font-stack-serif: "Piazzolla", Book Antiqua, Palatino, Palatino Linotype, Palatino LT STD, Georgia, serif;
+	--text-color: var(--gray-90);
+	--line-height: 1.5em;
+
+	--pg-padding: 4rem;
+}
+
+.serif {
+  font-family: var(--font-stack-serif);
+  font-optical-sizing: auto;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+.mono {
+  font-family: var(--font-stack-mono);
+  font-weight: 400;
+  font-style: normal;
 }
-a:hover {
-  color: #535bf2;
+
+.mono-bold {
+  font-family: var(--font-stack-mono);
+  font-weight: 700;
+  font-style: normal;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html, body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	font-size: 16px;
+	font-family: var(--font-stack-mono);
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+	font-family: monospace;
+	background: #fff;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+#root {
+  width: 100%;
+  height: 100%;
 }
