@@ -1,4 +1,3 @@
-import React from "react";
 import { getRandomColorFromSubset } from "../utils/colorUtils.ts";
 
 interface ShapeProps {

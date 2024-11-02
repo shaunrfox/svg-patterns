@@ -23,7 +23,6 @@ const Grid = ({
   fill: number;
 }) => {
   const wrapperRef = useRef(null);
-  const [wrapperSize, setWrapperSize] = React.useState({ width: 0, height: 0 });
   const [gridDimensions, setGridDimensions] = React.useState({
     cols: 0,
     rows: 0,
@@ -33,7 +32,6 @@ const Grid = ({
     const updateSize = () => {
       if (wrapperRef.current) {
         const newSize = getTargetSize(wrapperRef.current);
-        setWrapperSize(newSize);
 
         // Calculate effective cell size including gap
         const effectiveGridSize = gridSize + gapSize;
