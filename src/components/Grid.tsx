@@ -36,9 +36,9 @@ const Grid = ({
         // Calculate effective cell size including gap
         const effectiveGridSize = gridSize + gapSize;
 
-        // Recalculate grid dimensions using effective size
-        const numCols = Math.floor(newSize.width / effectiveGridSize);
-        const numRows = Math.floor(newSize.height / effectiveGridSize);
+        // Ensure we have at least 1 column and row
+        const numCols = Math.max(1, Math.floor(newSize.width / effectiveGridSize));
+        const numRows = Math.max(1, Math.floor(newSize.height / effectiveGridSize));
         setGridDimensions({ cols: numCols, rows: numRows });
       }
     };
@@ -70,9 +70,21 @@ const Grid = ({
 
   const totalElements = gridDimensions.rows * gridDimensions.cols;
 
+  const getPosition = (index: number) => {
+    const row = Math.floor(index / Math.max(1, gridDimensions.cols));
+    const col = index % Math.max(1, gridDimensions.cols);
+    const x = Math.max(0, col * (gridSize + gapSize));
+    const y = Math.max(0, row * (gridSize + gapSize));
+    return { x, y };
+  };
+
   return (
     <div className="grid-wrapper" ref={wrapperRef}>
-      <div
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={gridSize * gridDimensions.cols + gapSize * (gridDimensions.cols - 1)}
+        height={gridSize * gridDimensions.rows + gapSize * (gridDimensions.rows - 1)}
+        id="generated-svg"
         className="wrapper"
         style={{
           gridTemplateColumns: `repeat(${gridDimensions.cols}, ${gridSize}px)`,
@@ -80,18 +92,23 @@ const Grid = ({
           gap: `${gapSize}px`,
         }}
       >
-        {Array.from({ length: totalElements }, (_, index) => (
-          <SvgElement
-            key={`${index}-${selectedColorSetIndex}-${colorCount}`}
-            size={gridSize}
-            colorCount={colorCount}
-            selectedShape={selectedShape}
-            deviation={deviation}
-            selectedColorSetIndex={selectedColorSetIndex}
-            fill={fill}
-          />
-        ))}
-      </div>
+        {Array.from({ length: totalElements }, (_, index) => {
+          const { x, y } = getPosition(index);
+          return (
+            <SvgElement
+              key={`${index}-${selectedColorSetIndex}-${colorCount}`}
+              size={gridSize}
+              colorCount={colorCount}
+              selectedShape={selectedShape}
+              deviation={deviation}
+              selectedColorSetIndex={selectedColorSetIndex}
+              fill={fill}
+              x={x}
+              y={y}
+            />
+          );
+        })}
+      </svg>
     </div>
   );
 };

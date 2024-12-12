@@ -37,7 +37,7 @@ const Shapes = ({
   const getOffset = (deviation: number, max: number = Infinity): number => {
     if (!deviation || isNaN(deviation)) return 0;
     const offset = Math.floor(Math.random() * deviation * 2) - deviation;
-    return Math.max(0, Math.min(max, offset));
+    return Math.max(0, Math.min(max, Math.abs(offset)));
   };
 
   const dev = deviation;
@@ -50,10 +50,7 @@ const Shapes = ({
         return (
           <>
             <polygon
-              points={`${getOffset(dev, size)},0 ${size},0 ${getOffset(
-                dev,
-                size
-              )},${size} z`}
+              points={`${Math.max(0, getOffset(dev, size))},0 ${Math.max(0, size)},0 ${Math.max(0, getOffset(dev, size))},${Math.max(0, size)}`}
               fill={color}
               stroke="white"
               strokeWidth="1"
@@ -64,19 +61,13 @@ const Shapes = ({
         return (
           <>
             <polygon
-              points={`${getOffset(dev, size)},0 ${size},0 ${getOffset(
-                dev,
-                size
-              )},${size} z`}
+              points={`${Math.max(0, getOffset(dev, size))},0 ${Math.max(0, size)},0 ${Math.max(0, getOffset(dev, size))},${Math.max(0, size)}`}
               fill={getRandomColor()}
               stroke="white"
               strokeWidth="1"
             />
             <polygon
-              points={`${getOffset(
-                dev,
-                size
-              )},${size} ${size},${size} ${size},${getOffset(dev, size)} z`}
+              points={`${Math.max(0, getOffset(dev, size))},${Math.max(0, size)} ${Math.max(0, size)},${Math.max(0, size)} ${Math.max(0, size)},${Math.max(0, getOffset(dev, size))}`}
               fill={getRandomColor()}
               stroke="white"
               strokeWidth="1"
