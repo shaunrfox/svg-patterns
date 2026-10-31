@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Install Deno
         uses: denoland/setup-deno@v2
@@ -37,13 +37,13 @@ jobs:
           BASE_URL: ${{ github.event.repository.name }}
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: "./dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
